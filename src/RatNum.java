@@ -33,9 +33,11 @@ public class RatNum {
             System.out.println(e1);
         }
         if(this.n<0){
-            this.t -= this.t*2;
-            this.n -= this.n*2;
-            
+            this.t = - this.t;
+            this.n = - this.n;
+
+            System.out.println(this.t + "/" + this.n);
+
         }
 
 
@@ -71,16 +73,14 @@ public class RatNum {
         t = (this.n * r.getNumerator()) + (this.t * r.getDenominator());
 
 
-        RatNum r1 = new RatNum(t,n);
-
-        return r1;
+        return new RatNum(t,n);
     }
 
     public RatNum sub(RatNum r){
         int t,n;
 
         n = this.n * r.getDenominator();
-        t = (this.n * r.getNumerator()) - (this.t * r.getDenominator());
+        t = (this.t * r.getDenominator() - (this.n * r.getNumerator()));
 
         RatNum r1 = new RatNum(t,n);
 
@@ -90,7 +90,7 @@ public class RatNum {
         int t, n;
 
         n = this.n * r.getDenominator();
-        t = (this.n * r.getNumerator()) * (this.t * r.getDenominator());
+        t = this.t * r.getNumerator();
 
         RatNum r1 = new RatNum(t, n);
 
@@ -99,8 +99,8 @@ public class RatNum {
     public RatNum div(RatNum r) {
         int t, n;
 
-        n = this.n * r.getDenominator();
-        t = (this.n * r.getNumerator()) / (this.t * r.getDenominator());
+        t = this.t * r.getDenominator();
+        n = this.n * r.getNumerator();
 
         RatNum r1 = new RatNum(t, n);
 

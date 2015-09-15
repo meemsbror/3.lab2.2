@@ -12,10 +12,12 @@ public class Main {
             Scanner sc = new Scanner(System.in);
 
             input = sc.nextLine();
+            RatNum r1 = new RatNum(input);
 
-            RatNum r = new RatNum(input);
+            input = sc.nextLine();
+            RatNum r2 = new RatNum(input);
 
-
+            System.out.println(r1.sub(r2));
         }
 
     }
