@@ -8,6 +8,8 @@ public class RatNum {
         int n = y;
         int r;
 
+        System.out.println("test");
+
         if((m == 0 && n == 0))
             throw new IllegalArgumentException("both values were zero");
         if(n == 0)
