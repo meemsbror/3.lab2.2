@@ -35,6 +35,7 @@ public class RatNum {
         if(this.n<0){
             this.t -= this.t*2;
             this.n -= this.n*2;
+            
         }
 
 
