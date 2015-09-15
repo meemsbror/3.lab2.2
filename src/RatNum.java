@@ -6,23 +6,7 @@ public class RatNum {
     private int t,n;
 
     public RatNum(String s){
-        RatNum r = parse(s);
-        this.t = r.getNumerator();
-        this.n = r.getDenominator();
-
-        try {
-            this.t = t / gcd(t, n);
-            this.n = n / gcd(t, n);
-        }
-        catch (IllegalArgumentException e1){
-            System.out.println(e1);
-        }
-        if(this.n<0){
-            this.t -= this.t*2;
-            this.n -= this.n*2;
-        }
-
-
+        this(parse(s));
     }
 
     public RatNum(){
@@ -34,8 +18,6 @@ public class RatNum {
     public RatNum(int t){
         this.t = t;
         this.n = 1;
-
-
     }
 
     public RatNum(int t, int n){
@@ -73,6 +55,57 @@ public class RatNum {
         return n;
 
     }
+    public boolean equals(RatNum r){
+
+        return this.getNumerator()==r.getNumerator() && this.getDenominator()==r.getDenominator();
+
+    }
+    public boolean lessThan(RatNum r){
+        return(this.toDouble()<r.toDouble());
+    }
+    public RatNum add(RatNum r){
+        int t,n;
+
+        n = this.n * r.getDenominator();
+        t = (this.n * r.getNumerator()) + (this.t * r.getDenominator());
+
+
+        RatNum r1 = new RatNum(t,n);
+
+        return r1;
+    }
+
+    public RatNum sub(RatNum r){
+        int t,n;
+
+        n = this.n * r.getDenominator();
+        t = (this.n * r.getNumerator()) - (this.t * r.getDenominator());
+
+        RatNum r1 = new RatNum(t,n);
+
+        return r1;
+    }
+    public RatNum mul(RatNum r) {
+        int t, n;
+
+        n = this.n * r.getDenominator();
+        t = (this.n * r.getNumerator()) * (this.t * r.getDenominator());
+
+        RatNum r1 = new RatNum(t, n);
+
+        return r1;
+    }
+    public RatNum div(RatNum r) {
+        int t, n;
+
+        n = this.n * r.getDenominator();
+        t = (this.n * r.getNumerator()) / (this.t * r.getDenominator());
+
+        RatNum r1 = new RatNum(t, n);
+
+        return r1;
+    }
+
     public static int gcd(int x, int y){
         int m = x;
         int n = y;
@@ -107,7 +140,7 @@ public class RatNum {
         return (double)this.t/(double)this.n;
     }
 
-    public RatNum parse(String s){
+    public static RatNum parse(String s){
 
         String arr [] = s.split("/");
         if(arr.length==1) {
