@@ -1,6 +1,3 @@
-/**
- * Created by Boy on 2015-09-14.
- */
 public class RatNum {
 
     private int t,n;
@@ -30,7 +27,7 @@ public class RatNum {
             this.n = n / gcd(t, n);
         }
         catch (IllegalArgumentException e1){
-            System.out.println(e1);
+            throw e1;
         }
         if(this.n<0){
             this.t = - this.t;
@@ -59,9 +56,8 @@ public class RatNum {
 
     }
     public boolean equals(RatNum r){
-
-        return this.getNumerator()==r.getNumerator() && this.getDenominator()==r.getDenominator();
-
+        
+        return r!=null && this.getNumerator() == r.getNumerator() && this.getDenominator() == r.getDenominator();
     }
     public boolean lessThan(RatNum r){
         return(this.toDouble()<r.toDouble());
@@ -82,9 +78,7 @@ public class RatNum {
         n = this.n * r.getDenominator();
         t = (this.t * r.getDenominator() - (this.n * r.getNumerator()));
 
-        RatNum r1 = new RatNum(t,n);
-
-        return r1;
+        return new RatNum(t,n);
     }
     public RatNum mul(RatNum r) {
         int t, n;
@@ -92,9 +86,7 @@ public class RatNum {
         n = this.n * r.getDenominator();
         t = this.t * r.getNumerator();
 
-        RatNum r1 = new RatNum(t, n);
-
-        return r1;
+        return new RatNum(t, n);
     }
     public RatNum div(RatNum r) {
         int t, n;
@@ -102,9 +94,7 @@ public class RatNum {
         t = this.t * r.getDenominator();
         n = this.n * r.getNumerator();
 
-        RatNum r1 = new RatNum(t, n);
-
-        return r1;
+        return new RatNum(t, n);
     }
 
     public static int gcd(int x, int y){

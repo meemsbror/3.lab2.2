@@ -1,24 +1,14 @@
 import java.util.Scanner;
-
-/**
- * Created by Boy on 2015-09-15.
- */
 public class Main {
 
     public static void main(String [] args){
-        String input;
 
-        while(true){
-            Scanner sc = new Scanner(System.in);
 
-            input = sc.nextLine();
-            RatNum r1 = new RatNum(input);
+        RatNum w = new RatNum(75,25);
+        Object v = new RatNum(75,25);
 
-            input = sc.nextLine();
-            RatNum r2 = new RatNum(input);
+        System.out.println(w.equals(v));
 
-            System.out.println(r1.sub(r2));
-        }
 
     }
 }
