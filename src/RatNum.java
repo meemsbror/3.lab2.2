@@ -56,7 +56,7 @@ public class RatNum {
 
     }
     public boolean equals(RatNum r){
-        
+
         return r!=null && this.getNumerator() == r.getNumerator() && this.getDenominator() == r.getDenominator();
     }
     public boolean lessThan(RatNum r){
