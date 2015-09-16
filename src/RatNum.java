@@ -144,7 +144,14 @@ public class RatNum {
     public static RatNum parse(String s){
 
         String arr [] = s.split("/");
+        System.out.println(arr.length);
+        for (String str : arr){
+            if(str == null || str.length()==0){
+                throw new NumberFormatException("");
+            }
+        }
         if(arr.length==1) {
+            System.out.println("yo");
             s += "/1";
             arr = s.split("/");
         }
@@ -157,6 +164,7 @@ public class RatNum {
                 return r;
 
             } catch (NumberFormatException e1) {
+                throw  e1;
             }
         }
         throw new NumberFormatException();
