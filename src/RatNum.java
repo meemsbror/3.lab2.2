@@ -55,9 +55,17 @@ public class RatNum {
         return n;
 
     }
-    public boolean equals(RatNum r){
+    public boolean equals(Object o){
 
-        return r!=null && this.getNumerator() == r.getNumerator() && this.getDenominator() == r.getDenominator();
+        if (o!=null && o instanceof RatNum){
+            RatNum r;
+            r = (RatNum)o;
+            return this.getNumerator() == r.getNumerator() && this.getDenominator() == r.getDenominator();
+        }
+
+        return false;
+
+
     }
     public boolean lessThan(RatNum r){
         return(this.toDouble()<r.toDouble());
