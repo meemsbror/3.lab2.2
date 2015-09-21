@@ -32,21 +32,21 @@ class RatNumTest3 {
         String str = new String("TEST");
 
         System.out.println();
-        System.out.println(">>>> Test av equals: Vi har inte gått igenom equals ännu ");
-        System.out.println("så du behöver inte klara dessa tester än");
+        System.out.println(">>>> Test av equals: Vi har inte gÃ¥tt igenom equals Ã¤nnu ");
+        System.out.println("sÃ¥ du behÃ¶ver inte klara dessa tester Ã¤n");
         //System.out.println("equals test 1 ");
         if (x.equals(y) || !y.equals(z) || !x.equals(w)) {
             System.out.println("RatNumTest3: FEL 1 i equals!!");
         }
         //System.out.println("equals test 2 ");
         if ( !w.equals(v)  ) { //  w skall vara lika med v
-            // med equals(RatNum r) så väljs dock objects equals
-            // eftersom parameterprofilen stämmer där och då blir dom olika
+            // med equals(RatNum r) sÃ¥ vÃ¤ljs dock objects equals
+            // eftersom parameterprofilen stÃ¤mmer dÃ¤r och dÃ¥ blir dom olika
             System.out.println("RatNumTest3: FEL 2 i equals!!");
         }
         //.out.println("equals test 3 ");
         if ( !v.equals(w) ) { // dyn. bindningen ger RatNums equals
-            // men med equals(RatNum r) så blir det som ovan
+            // men med equals(RatNum r) sÃ¥ blir det som ovan
             System.out.println("RatNumTest3: FEL 3 i equals!!");
         }
         //.out.println("equals test 4 ");
@@ -59,11 +59,11 @@ class RatNumTest3 {
         }
         //System.out.println("equals test 5 ");
         if ( w.equals(str) ) { // skall ge false
-            // med equals(RatNum r) får man återigen Objects equals
-            // och den ger rätt svar här
+            // med equals(RatNum r) fÃ¥r man Ã¥terigen Objects equals
+            // och den ger rÃ¤tt svar hÃ¤r
             System.out.println("RatNumTest3: FEL 5 i equals!!");
         }
-        System.out.println("<<<< Slut på equals tester");
+        System.out.println("<<<< Slut pÃ¥ equals tester");
 		/*
 		try {
 			y = (RatNum) x.clone();
@@ -76,7 +76,7 @@ class RatNumTest3 {
         for (int i=1; i<=9; i++) {
             for (int j=0; j <= 2*i; j++) {
                 if( Math.abs(new RatNum(j, i).toDouble() - (double)j/i) > 1.0e-13) {
-                    System.out.println("RatNumTest3: FEL i toDouble!! för " + j + "/" + i);
+                    System.out.println("RatNumTest3: FEL i toDouble!! fÃ¶r " + j + "/" + i);
                 }
             }
         }
@@ -126,7 +126,7 @@ class RatNumTest3 {
                 return("NumberFormatException: " + e.getMessage());
             }
         }
-        return ("Okänt fel");
+        return ("OkÃ¤nt fel");
     } // end testExpr
 
 
@@ -135,7 +135,7 @@ class RatNumTest3 {
         divTester();
         StringBuilder stringToPrint;
         String correctAnswer;
-        // om det finns argumet så är det testfilen => auto test
+        // om det finns argumet sÃ¥ Ã¤r det testfilen => auto test
         boolean machine; // keep track of if testing is human or machine
         String filename = "";
         Scanner in;
@@ -149,7 +149,7 @@ class RatNumTest3 {
         } else {
             machine = false;
             in = new Scanner(System.in);
-            System.out.println("Skriv uttryck på formen a/b ? c/d, där ? är något av tecknen + - * / = <");
+            System.out.println("Skriv uttryck pÃ¥ formen a/b ? c/d, dÃ¤r ? Ã¤r nÃ¥got av tecknen + - * / = <");
         }
         // read input
         while (true) {
@@ -178,7 +178,7 @@ class RatNumTest3 {
                 //System.out.println( "====================================================" );
                 //System.out.println("\t##*"+givenAnswer+"* " + "*"+correctAnswer+ "*" + ratNumToString(new RatNum(givenAnswer)) + "* debug"); // debug
                 // test if answer given as a/B +
-                // strängen till NumberFormatException kan vara olika
+                // strÃ¤ngen till NumberFormatException kan vara olika
                 if ( correctAnswer.equals(ratNumToString(new RatNum(givenAnswer)))
                         || ( correctAnswer.indexOf("NumberFormatException") != -1
                         && givenAnswer.indexOf("NumberFormatException") != -1 )

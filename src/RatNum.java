@@ -3,6 +3,7 @@ public class RatNum {
     private int t,n;
 
     public RatNum(String s){
+
         this(parse(s));
     }
 
@@ -32,8 +33,6 @@ public class RatNum {
         if(this.n<0){
             this.t = - this.t;
             this.n = - this.n;
-
-            System.out.println(this.t + "/" + this.n);
 
         }
 
@@ -141,20 +140,21 @@ public class RatNum {
 
     public static RatNum parse(String s){
 
-        String arr [] = s.split("/");
-        System.out.println(arr.length);
-        for (String str : arr){
-            if(str == null || str.length()==0){
-                throw new NumberFormatException("");
+        String arr[] = s.split("/");
+        if (arr.length == 1) {
+            if(s.charAt(0)=='/'){
+                throw new NumberFormatException("For input string \"\"");
             }
-        }
-        if(arr.length==1) {
-            System.out.println("yo");
-            s += "/1";
-            arr = s.split("/");
-        }
+            if(!(s.contains( "/"))) {
+                String tmp;
+                tmp = arr[0];
+                arr = new String[2];
+                arr[0]=tmp;
+                arr[1]="1";
+            }
 
-        if(arr.length == 2) {
+        }
+        if (arr.length == 2) {
             RatNum r;
 
             try {
@@ -162,10 +162,24 @@ public class RatNum {
                 return r;
 
             } catch (NumberFormatException e1) {
-                throw  e1;
+                throw e1;
             }
+        }else if(arr.length>2){
+            String e1="\"";
+
+            for(int i = 2; i<arr.length;i++){
+                e1+="/"+arr[i];
+
+
+            }
+            e1+="\"";
+            throw new NumberFormatException (e1);
+
         }
-        throw new NumberFormatException();
+
+
+        throw new NumberFormatException("For input string: \"\"");
+
 
     }
 }
