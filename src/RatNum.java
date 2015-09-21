@@ -68,7 +68,7 @@ public class RatNum {
 
     }
     public boolean lessThan(RatNum r){
-        return(this.toDouble()<r.toDouble());
+        return(this.getNumerator()*r.getDenominator()<r.getNumerator()*this.getDenominator());
     }
     public RatNum add(RatNum r){
         int t,n;
