@@ -143,7 +143,7 @@ public class RatNum {
         String arr[] = s.split("/");
         if (arr.length == 1) {
             if(s.charAt(0)=='/'){
-                throw new NumberFormatException("For input string \"\"");
+                throw new NumberFormatException("For input string: \"\"");
             }
             if(!(s.contains( "/"))) {
                 String tmp;
@@ -165,7 +165,7 @@ public class RatNum {
                 throw e1;
             }
         }else if(arr.length>2){
-            String e1="\"";
+            String e1="For input string: \"";
 
             for(int i = 2; i<arr.length;i++){
                 e1+="/"+arr[i];
