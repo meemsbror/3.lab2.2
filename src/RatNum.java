@@ -1,11 +1,9 @@
-/**
- * Created by Boy on 2015-09-14.
- */
 public class RatNum {
 
     private int t,n;
 
     public RatNum(String s){
+
         this(parse(s));
     }
 
@@ -30,13 +28,11 @@ public class RatNum {
             this.n = n / gcd(t, n);
         }
         catch (IllegalArgumentException e1){
-            System.out.println(e1);
+            throw e1;
         }
         if(this.n<0){
             this.t = - this.t;
             this.n = - this.n;
-
-            System.out.println(this.t + "/" + this.n);
 
         }
 
@@ -58,13 +54,20 @@ public class RatNum {
         return n;
 
     }
-    public boolean equals(RatNum r){
+    public boolean equals(Object o){
 
-        return this.getNumerator()==r.getNumerator() && this.getDenominator()==r.getDenominator();
+        if (o!=null && o instanceof RatNum){
+            RatNum r;
+            r = (RatNum)o;
+            return this.getNumerator() == r.getNumerator() && this.getDenominator() == r.getDenominator();
+        }
+
+        return false;
+
 
     }
     public boolean lessThan(RatNum r){
-        return(this.toDouble()<r.toDouble());
+        return(this.getNumerator()*r.getDenominator()<r.getNumerator()*this.getDenominator());
     }
     public RatNum add(RatNum r){
         int t,n;
@@ -82,9 +85,7 @@ public class RatNum {
         n = this.n * r.getDenominator();
         t = (this.t * r.getDenominator() - (this.n * r.getNumerator()));
 
-        RatNum r1 = new RatNum(t,n);
-
-        return r1;
+        return new RatNum(t,n);
     }
     public RatNum mul(RatNum r) {
         int t, n;
@@ -92,9 +93,7 @@ public class RatNum {
         n = this.n * r.getDenominator();
         t = this.t * r.getNumerator();
 
-        RatNum r1 = new RatNum(t, n);
-
-        return r1;
+        return new RatNum(t, n);
     }
     public RatNum div(RatNum r) {
         int t, n;
@@ -102,9 +101,7 @@ public class RatNum {
         t = this.t * r.getDenominator();
         n = this.n * r.getNumerator();
 
-        RatNum r1 = new RatNum(t, n);
-
-        return r1;
+        return new RatNum(t, n);
     }
 
     public static int gcd(int x, int y){
@@ -143,20 +140,21 @@ public class RatNum {
 
     public static RatNum parse(String s){
 
-        String arr [] = s.split("/");
-        System.out.println(arr.length);
-        for (String str : arr){
-            if(str == null || str.length()==0){
-                throw new NumberFormatException("");
+        String arr[] = s.split("/");
+        if (arr.length == 1) {
+            if(s.charAt(0)=='/'){
+                throw new NumberFormatException("For input string: \"\"");
             }
-        }
-        if(arr.length==1) {
-            System.out.println("yo");
-            s += "/1";
-            arr = s.split("/");
-        }
+            if(!(s.contains( "/"))) {
+                String tmp;
+                tmp = arr[0];
+                arr = new String[2];
+                arr[0]=tmp;
+                arr[1]="1";
+            }
 
-        if(arr.length == 2) {
+        }
+        if (arr.length == 2) {
             RatNum r;
 
             try {
@@ -164,10 +162,24 @@ public class RatNum {
                 return r;
 
             } catch (NumberFormatException e1) {
-                throw  e1;
+                throw e1;
             }
+        }else if(arr.length>2){
+            String e1="For input string: \"";
+
+            for(int i = 2; i<arr.length;i++){
+                e1+="/"+arr[i];
+
+
+            }
+            e1+="\"";
+            throw new NumberFormatException (e1);
+
         }
-        throw new NumberFormatException();
+
+
+        throw new NumberFormatException("For input string: \"\"");
+
 
     }
 }

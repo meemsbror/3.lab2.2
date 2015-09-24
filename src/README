@@ -1,0 +1,64 @@
+Grupp 3
+
+Arvid Björklund och Frej Karlsson
+
+
+
+
+
+
+
+>>>> Test av equals: Vi har inte gÃ¥tt igenom equals Ã¤nnu
+sÃ¥ du behÃ¶ver inte klara dessa tester Ã¤n
+<<<< Slut pÃ¥ equals tester
+Skriv uttryck pÃ¥ formen a/b ? c/d, dÃ¤r ? Ã¤r nÃ¥got av tecknen + - * / = <
+> 1/3 + 1/4     --> 7/12
+> 2/9 * -4/5    --> -8/45
+> 2/6 - 7/9     --> -4/9
+> 7/-2 / -2/5   --> 35/4
+> -5/10 + -3/4  --> -5/4
+> -5/3 * 4      --> -20/3
+> 7/9 * 2       --> 14/9
+> -5 * 1/3      --> -5/3
+> 2 / -5        --> -2/5
+> 2/5 = 40/100  --> true
+> 6/18 = -1/3   --> false
+> 2/9 < 1/5     --> false
+> -5/9 < 1/2    --> true
+> 1/2 +1/3      --> Felaktigt uttryck!
+> 1/5   --> Felaktigt uttryck!
+> /4 + 1/3      --> NumberFormatException: For input string: ""
+> 5/ + 1/3      --> NumberFormatException: For input string: ""
+> 1//4 + 1/4    --> NumberFormatException: "/4"
+> 1/ - 2 + 1/3  --> Felaktigt uttryck!
+> 1/3 a + 1/3   --> Felaktigt uttryck!
+> -/3 + 1/3     --> NumberFormatException: For input string: "-"
+> 1/3 + 1/3 + 1/3       --> Felaktigt uttryck!
+> 1/3 & 1/3     --> Felaktig operator!
+> 1/0 + 1/3     --> NumberFormatException: Denominator = 0
+> 1 / 0 --> NumberFormatException: Denominator = 0
+> Exception in thread "main" java.util.NoSuchElementException: No line found
+        at java.util.Scanner.nextLine(Scanner.java:1540)
+        at RatNumTest3.main(RatNumTest3.java:158)
+
+
+
+Beskrivning av RatNumTest3:
+
+RatNumTest3 börjar med att anropa RatNumTest2:s metod divTester för att se att dessa tester fortfarande fungerar. Därefter anropas dess egna divTest. Där skapas sex stycken olika sorters objekt för att testa RatNum med. Funktionen equals testas först genom att jämföra dessa 6 objekt samt att jämföra de med avsaknaden av objekt (null).
+
+Därefter testas toDouble funktionen genom att den anropas med 2 godtyckliga tal mellan i = 1-9 respektive j = 0-i*2. Därefter jämförs detta toDouble resultat med den vanliga operatorn (double)i/j och ger utrymme för margin error.
+
+Den kollar om det finns några objekt i arg[]. Om det finns det så tolkar den inputen som ett filnamn med olika tester annars förväntar den sig manuell inmatning.
+
+Sedan går programmet in i en loop och kollar om det är automatisk eller manuell inmatning. Om det är en automatisk inläsning och den inte har något mer i scannern så avslutar den programmet.
+
+Annars tar den in nästa rad. Om ingen indata finns går den ur lopen och programmet avslutas.
+
+Finns det något på nästa rad så kollar den om det är automatisk inmatning och letar efter svaret, om det inte finns något svar så avslutar den annars sätter den correctAnswer som svaret och sätter s som uttrycket som ska testas
+
+Sedan kör den funktionen testExpr på s som lägger in dom två rationella talen och operatorn i en array med 3 platser. Den kollar om operatorn är korrekt, är den inte det returnerar den ”Felaktig operator!”, kör parse på de båda rationella talen och utför den givna av operatorn givna funktionen och returnerar resultatet.
+
+Om resultatet är fel och det är automatisk inmatning så skriver den ut ett errormeddelande och skriver ut det rätta svaret.
+
+Det av RatNum givna svaret skrivs ut.
