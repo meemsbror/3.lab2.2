@@ -42,18 +42,16 @@ public class RatNum {
     public RatNum(RatNum r){
         this.t = r.getNumerator();
         this.n = r.getDenominator();
-
     }
 
     public int getNumerator(){
         return t;
-
     }
 
     public int getDenominator(){
         return n;
-
     }
+
     public boolean equals(Object o){
 
         if (o!=null && o instanceof RatNum){
@@ -69,6 +67,7 @@ public class RatNum {
     public boolean lessThan(RatNum r){
         return(this.getNumerator()*r.getDenominator()<r.getNumerator()*this.getDenominator());
     }
+
     public RatNum add(RatNum r){
         int t,n;
 
